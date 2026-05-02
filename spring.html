@@ -37,9 +37,11 @@
             transform: translateY(0);
         }
 
+        /* 🔒 이미지 보호 */
         img {
             -webkit-user-drag: none;
             user-drag: none;
+            -webkit-touch-callout: none; /* iPhone 길게 누르기 메뉴 제거 */
         }
 
         .no-select {
@@ -84,11 +86,11 @@
         </div>
     </header>
 
-    <!-- Main -->
-    <main class="pt-[140px]">
+    <!-- ✅ 핵심 수정: safe-area 반영 -->
+    <main class="pt-[calc(140px+env(safe-area-inset-top))]">
 
-        <!-- TEXT (여기만 수정됨) -->
-        <section class="mt-14 md:mt-0">
+        <!-- TEXT -->
+        <section>
             <div class="max-w-2xl px-6 text-base leading-relaxed optical-text">
 
                 <p class="text-center mb-12 text-lg">
@@ -114,9 +116,75 @@
             </div>
         </section>
 
-        <!-- 나머지 section 그대로 유지 -->
+        <!-- IMAGE -->
+        <section>
+            <div class="flex flex-col items-center">
+                <img src="A single narrative.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
+                <p class="mt-4 text-base">A single narrative</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex flex-col items-center">
+                <img src="The northern field of Konkuk University.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
+                <p class="mt-4 text-base">The northern field of Konkuk University</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex flex-col items-center">
+                <img src="Ground floor plan.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
+                <p class="mt-4 text-base">Ground floor plan</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex flex-col items-center">
+                <img src="Second floor plan.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
+                <p class="mt-4 text-base">Second floor plan</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex flex-col items-center">
+                <img src="Objects, passage, and roof.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
+                <p class="mt-4 text-base">Objects, passage, and roof</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex flex-col items-center">
+                <img src="View from the shared space.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
+                <p class="mt-4 text-base">View from the shared space</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex flex-col items-center">
+                <img src="View from the backyard.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
+                <p class="mt-4 text-base">View from the backyard</p>
+            </div>
+        </section>
 
     </main>
+
+    <script>
+        const elements = document.querySelectorAll('.fade');
+
+        function checkScroll() {
+            const trigger = window.innerHeight * 0.85;
+
+            elements.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < trigger) {
+                    el.classList.add('show');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        checkScroll();
+    </script>
 
 </body>
 </html>
