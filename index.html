@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>Minseok Kim</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minseokkim - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
 </head>
-<body>
-  <h1>Minseok Kim</h1>
-  <p>Architecture Portfolio</p>
+<body class="min-h-screen bg-white">
+    <!-- Header -->
+    <header class="pt-12 pb-8 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-sm tracking-wide mb-6">minseokkim</h1>
+            <nav class="flex justify-center gap-3 text-sm">
+                <a href="#projects" class="hover:opacity-60 transition-opacity">Project List</a>
+                <span>/</span>
+                <a href="#about" class="hover:opacity-60 transition-opacity">About</a>
+                <span>/</span>
+                <a href="#contact" class="hover:opacity-60 transition-opacity">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-6 py-12">
+        <div class="max-w-3xl mx-auto">
+            <!-- Featured Image -->
+            <div class="mb-6">
+                <img
+                    src="long.jpg"
+                    alt="On a Spring Day of Passing Whispers"
+                    class="w-full h-auto"
+                />
+            </div>
+
+            <!-- Caption -->
+            <div class="text-center">
+                <p class="text-sm mb-1">On a Spring Day of Passing Whispers</p>
+                <p class="text-sm">Drawing and redering workshop project, 2026</p>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
