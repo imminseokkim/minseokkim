@@ -5,16 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>minseokkim - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
         }
+
+        /* 🔒 이미지 보호 */
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
+
+        /* 🔒 선택 최소화 */
+        .no-select {
+            user-select: none;
+            -webkit-user-select: none;
+        }
     </style>
 </head>
 
-<body class="min-h-screen bg-white">
+<body class="min-h-screen bg-white no-select">
 
-    <!-- Header (완전 기준) -->
+    <!-- 🔒 보안 스크립트 -->
+    <script>
+        // 우클릭 방지
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // 드래그 방지
+        document.addEventListener('dragstart', e => e.preventDefault());
+
+        // 드롭 방지
+        document.addEventListener('drop', e => e.preventDefault());
+
+        // 복사 방지
+        document.addEventListener('copy', e => e.preventDefault());
+
+        // Ctrl 기반 단축키 차단
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                const blocked = ['c', 's', 'u'];
+                if (blocked.includes(e.key.toLowerCase())) {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
+
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-base tracking-wide mb-6">minseokkim</h1>
@@ -58,6 +96,7 @@
         </div>
     </main>
 
+    <!-- JS -->
     <script>
         const images = [
             "Objects, passage, and roof.jpg",
@@ -69,6 +108,7 @@
 
         function showImage() {
             const img = document.getElementById("slider");
+
             img.style.opacity = 0;
 
             setTimeout(() => {
