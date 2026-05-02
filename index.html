@@ -33,23 +33,27 @@
         <div class="max-w-3xl mx-auto">
 
             <!-- Featured Image Slider -->
-            <div class="mb-6 relative">
+            <div class="mb-6 relative w-full h-[500px] bg-white flex items-center justify-center">
 
                 <!-- 이미지 -->
                 <img
                     id="slider"
                     src="On a Spring Day of Passing Whispers_west elevation.jpg"
                     alt="On a Spring Day of Passing Whispers"
-                    class="w-full h-auto"
+                    class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
                 />
 
                 <!-- 왼쪽 클릭 영역 -->
                 <div onclick="prevImage()"
-                     class="absolute left-0 top-0 w-1/2 h-full cursor-w-resize"></div>
+                     class="absolute left-0 top-0 w-[30%] h-full cursor-w-resize"></div>
+
+                <!-- 중앙 클릭 영역 (프로젝트 이동) -->
+                <a href="On%20a%20Spring%20Day%20of%20Passing%20Whispers.html"
+                   class="absolute left-[30%] top-0 w-[40%] h-full cursor-pointer"></a>
 
                 <!-- 오른쪽 클릭 영역 -->
                 <div onclick="nextImage()"
-                     class="absolute right-0 top-0 w-1/2 h-full cursor-e-resize"></div>
+                     class="absolute right-0 top-0 w-[30%] h-full cursor-e-resize"></div>
 
             </div>
 
@@ -73,7 +77,14 @@
         let currentIndex = 0;
 
         function showImage() {
-            document.getElementById("slider").src = images[currentIndex];
+            const img = document.getElementById("slider");
+
+            img.style.opacity = 0;
+
+            setTimeout(() => {
+                img.src = images[currentIndex];
+                img.style.opacity = 1;
+            }, 300);
         }
 
         function nextImage() {
