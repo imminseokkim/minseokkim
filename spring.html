@@ -51,6 +51,24 @@
 
 <body class="bg-white text-black no-select">
 
+    <!-- 보안 -->
+    <script>
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
+        document.addEventListener('drop', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                const blocked = ['c', 's', 'u'];
+                if (blocked.includes(e.key.toLowerCase())) {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
+
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-base tracking-wide mb-6">
@@ -66,10 +84,11 @@
         </div>
     </header>
 
-    <!-- ✅ 여기만 수정됨 -->
-    <main class="pt-[180px] md:pt-[140px]">
+    <!-- Main -->
+    <main class="pt-[140px]">
 
-        <section>
+        <!-- TEXT (여기만 수정됨) -->
+        <section class="mt-14 md:mt-0">
             <div class="max-w-2xl px-6 text-base leading-relaxed optical-text">
 
                 <p class="text-center mb-12 text-lg">
@@ -94,6 +113,8 @@
 
             </div>
         </section>
+
+        <!-- 나머지 section 그대로 유지 -->
 
     </main>
 
