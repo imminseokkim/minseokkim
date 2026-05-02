@@ -11,7 +11,9 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen bg-white">
+
     <!-- Header -->
     <header class="pt-12 pb-8 px-6">
         <div class="max-w-4xl mx-auto text-center">
@@ -29,21 +31,61 @@
     <!-- Main Content -->
     <main class="px-6 py-12">
         <div class="max-w-3xl mx-auto">
-            <!-- Featured Image -->
-            <div class="mb-6">
+
+            <!-- Featured Image Slider -->
+            <div class="mb-6 relative">
+
+                <!-- 이미지 -->
                 <img
-                    src="long.jpg"
+                    id="slider"
+                    src="On a Spring Day of Passing Whispers_west elevation.jpg"
                     alt="On a Spring Day of Passing Whispers"
                     class="w-full h-auto"
                 />
+
+                <!-- 왼쪽 클릭 영역 -->
+                <div onclick="prevImage()"
+                     class="absolute left-0 top-0 w-1/2 h-full cursor-w-resize"></div>
+
+                <!-- 오른쪽 클릭 영역 -->
+                <div onclick="nextImage()"
+                     class="absolute right-0 top-0 w-1/2 h-full cursor-e-resize"></div>
+
             </div>
 
             <!-- Caption -->
             <div class="text-center">
                 <p class="text-sm mb-1">On a Spring Day of Passing Whispers</p>
-                <p class="text-sm">Drawing and redering workshop project, 2026</p>
+                <p class="text-sm">Drawing and rendering workshop project, 2026</p>
             </div>
+
         </div>
     </main>
+
+    <!-- JavaScript -->
+    <script>
+        const images = [
+            "On a Spring Day of Passing Whispers_west elevation.jpg",
+            "On a Spring Day of Passing Whispers_passage.jpg",
+            "On a Spring Day of Passing Whispers_backyard.jpg"
+        ];
+
+        let currentIndex = 0;
+
+        function showImage() {
+            document.getElementById("slider").src = images[currentIndex];
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage();
+        }
+    </script>
+
 </body>
 </html>
