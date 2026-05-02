@@ -19,39 +19,38 @@
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-sm tracking-wide mb-6">minseokkim</h1>
             <nav class="flex justify-center gap-3 text-sm">
-                <a href="#projects" class="hover:opacity-60 transition-opacity">Project List</a>
+                <a href="#" class="hover:opacity-60 transition-opacity">Project List</a>
                 <span>/</span>
-                <a href="#about" class="hover:opacity-60 transition-opacity">About</a>
+                <a href="#" class="hover:opacity-60 transition-opacity">About</a>
                 <span>/</span>
-                <a href="#contact" class="hover:opacity-60 transition-opacity">Contact</a>
+                <a href="#" class="hover:opacity-60 transition-opacity">Contact</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main -->
     <main class="px-6 py-12">
         <div class="max-w-3xl mx-auto">
 
-            <!-- Featured Image Slider -->
+            <!-- Slider -->
             <div class="mb-6 relative w-full h-[500px] bg-white flex items-center justify-center">
 
                 <!-- 이미지 -->
                 <img
                     id="slider"
                     src="On a Spring Day of Passing Whispers_west elevation.jpg"
-                    alt="On a Spring Day of Passing Whispers"
                     class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
                 />
 
-                <!-- 왼쪽 클릭 영역 -->
+                <!-- 왼쪽 -->
                 <div onclick="prevImage()"
                      class="absolute left-0 top-0 w-[30%] h-full cursor-w-resize"></div>
 
-                <!-- 중앙 클릭 영역 (프로젝트 이동) -->
+                <!-- 중앙 (프로젝트 연결) -->
                 <a href="On%20a%20Spring%20Day%20of%20Passing%20Whispers.html"
                    class="absolute left-[30%] top-0 w-[40%] h-full cursor-pointer"></a>
 
-                <!-- 오른쪽 클릭 영역 -->
+                <!-- 오른쪽 -->
                 <div onclick="nextImage()"
                      class="absolute right-0 top-0 w-[30%] h-full cursor-e-resize"></div>
 
@@ -66,7 +65,7 @@
         </div>
     </main>
 
-    <!-- JavaScript -->
+    <!-- JS -->
     <script>
         const images = [
             "On a Spring Day of Passing Whispers_west elevation.jpg",
