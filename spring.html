@@ -18,6 +18,15 @@
             justify-content: center;
         }
 
+        /* ✅ Optical 타이포 복구 */
+        .optical-text {
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            letter-spacing: 0.01em;
+            word-spacing: 0.02em;
+        }
+
         .fade {
             opacity: 0;
             transform: translateY(30px);
@@ -35,7 +44,7 @@
             user-drag: none;
         }
 
-        /* 🔒 선택 방지 (이미지 중심) */
+        /* 🔒 선택 방지 */
         .no-select {
             user-select: none;
             -webkit-user-select: none;
@@ -45,21 +54,13 @@
 
 <body class="bg-white text-black no-select">
 
-    <!-- 🔒 보안 스크립트 -->
+    <!-- 🔒 보안 -->
     <script>
-        // 우클릭 방지
         document.addEventListener('contextmenu', e => e.preventDefault());
-
-        // 드래그 방지
         document.addEventListener('dragstart', e => e.preventDefault());
-
-        // 이미지 드롭 방지
         document.addEventListener('drop', e => e.preventDefault());
-
-        // 복사 방지 (Ctrl+C)
         document.addEventListener('copy', e => e.preventDefault());
 
-        // Ctrl 키 기반 단축키 일부 차단
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey) {
                 const blocked = ['c', 's', 'u'];
@@ -77,11 +78,11 @@
                 <a href="index.html">minseokkim</a>
             </h1>
             <nav class="flex justify-center gap-3 text-base">
-                <a href="index.html" class="hover:opacity-60 transition-opacity">Project List</a>
+                <a href="index.html">Project List</a>
                 <span>/</span>
-                <a href="#" class="hover:opacity-60 transition-opacity">About</a>
+                <a href="#">About</a>
                 <span>/</span>
-                <a href="#" class="hover:opacity-60 transition-opacity">Contact</a>
+                <a href="#">Contact</a>
             </nav>
         </div>
     </header>
@@ -116,7 +117,7 @@
             </div>
         </section>
 
-        <!-- IMAGE SECTIONS -->
+        <!-- IMAGE -->
         <section>
             <div class="flex flex-col items-center">
                 <img src="A single narrative.jpg" class="max-h-[85vh] object-contain fade">
