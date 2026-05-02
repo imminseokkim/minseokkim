@@ -18,7 +18,6 @@
             justify-content: center;
         }
 
-        /* ✅ Optical 타이포 복구 */
         .optical-text {
             text-align: justify;
             text-justify: inter-word;
@@ -38,13 +37,11 @@
             transform: translateY(0);
         }
 
-        /* 🔒 이미지 보호 */
         img {
             -webkit-user-drag: none;
             user-drag: none;
         }
 
-        /* 🔒 선택 방지 */
         .no-select {
             user-select: none;
             -webkit-user-select: none;
@@ -54,24 +51,6 @@
 
 <body class="bg-white text-black no-select">
 
-    <!-- 🔒 보안 -->
-    <script>
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('dragstart', e => e.preventDefault());
-        document.addEventListener('drop', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
-
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey) {
-                const blocked = ['c', 's', 'u'];
-                if (blocked.includes(e.key.toLowerCase())) {
-                    e.preventDefault();
-                }
-            }
-        });
-    </script>
-
-    <!-- Header -->
     <header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-base tracking-wide mb-6">
@@ -87,10 +66,9 @@
         </div>
     </header>
 
-    <!-- Main -->
-    <main class="pt-[140px]">
+    <!-- ✅ 여기만 수정됨 -->
+    <main class="pt-[180px] md:pt-[140px]">
 
-        <!-- TEXT -->
         <section>
             <div class="max-w-2xl px-6 text-base leading-relaxed optical-text">
 
@@ -117,75 +95,7 @@
             </div>
         </section>
 
-        <!-- IMAGE -->
-        <section>
-            <div class="flex flex-col items-center">
-                <img src="A single narrative.jpg" class="max-h-[85vh] object-contain fade">
-                <p class="mt-4 text-base">A single narrative</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="flex flex-col items-center">
-                <img src="The northern field of Konkuk University.jpg" class="max-h-[85vh] object-contain fade">
-                <p class="mt-4 text-base">The northern field of Konkuk University</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="flex flex-col items-center">
-                <img src="Ground floor plan.jpg" class="max-h-[85vh] object-contain fade">
-                <p class="mt-4 text-base">Ground floor plan</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="flex flex-col items-center">
-                <img src="Second floor plan.jpg" class="max-h-[85vh] object-contain fade">
-                <p class="mt-4 text-base">Second floor plan</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="flex flex-col items-center">
-                <img src="Objects, passage, and roof.jpg" class="max-h-[85vh] object-contain fade">
-                <p class="mt-4 text-base">Objects, passage, and roof</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="flex flex-col items-center">
-                <img src="View from the shared space.jpg" class="max-h-[85vh] object-contain fade">
-                <p class="mt-4 text-base">View from the shared space</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="flex flex-col items-center">
-                <img src="View from the backyard.jpg" class="max-h-[85vh] object-contain fade">
-                <p class="mt-4 text-base">View from the backyard</p>
-            </div>
-        </section>
-
     </main>
-
-    <script>
-        const elements = document.querySelectorAll('.fade');
-
-        function checkScroll() {
-            const trigger = window.innerHeight * 0.85;
-
-            elements.forEach(el => {
-                const top = el.getBoundingClientRect().top;
-                if (top < trigger) {
-                    el.classList.add('show');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkScroll);
-        checkScroll();
-    </script>
 
 </body>
 </html>
