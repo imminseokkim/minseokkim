@@ -18,6 +18,15 @@
             justify-content: center;
         }
 
+        /* ✨ 핵심 타이포 스타일 */
+        .optical-text {
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            letter-spacing: 0.01em;
+            word-spacing: 0.02em;
+        }
+
         .fade {
             opacity: 0;
             transform: translateY(30px);
@@ -33,7 +42,7 @@
 
 <body class="bg-white text-black">
 
-    <!-- Header (index와 완전 동일) -->
+    <!-- Header -->
     <header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-base tracking-wide mb-6">
@@ -42,9 +51,9 @@
             <nav class="flex justify-center gap-3 text-base">
                 <a href="index.html" class="hover:opacity-60 transition-opacity">Project List</a>
                 <span>/</span>
-                <a href="#" class="hover:opacity-60 transition-opacity">About</a>
+                <a href="#">About</a>
                 <span>/</span>
-                <a href="#" class="hover:opacity-60 transition-opacity">Contact</a>
+                <a href="#">Contact</a>
             </nav>
         </div>
     </header>
@@ -54,7 +63,7 @@
 
         <!-- TEXT -->
         <section>
-            <div class="max-w-3xl px-6 text-base leading-relaxed">
+            <div class="max-w-2xl px-6 text-base leading-relaxed optical-text">
 
                 <p class="text-center mb-12 text-lg">
                     On a Spring Day of Passing Whispers
