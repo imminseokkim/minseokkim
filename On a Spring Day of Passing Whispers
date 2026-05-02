@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On a Spring Day of Passing Whispers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-white">
+
+    <!-- Header -->
+    <header class="pt-12 pb-8 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-sm tracking-wide mb-6">
+                <a href="index.html">minseokkim</a>
+            </h1>
+            <nav class="flex justify-center gap-3 text-sm">
+                <a href="index.html" class="hover:opacity-60 transition-opacity">Project List</a>
+                <span>/</span>
+                <a href="#">About</a>
+                <span>/</span>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="px-6 py-12">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Image Slider -->
+            <div class="mb-6 relative w-full h-[500px] bg-white flex items-center justify-center">
+
+                <img
+                    id="slider"
+                    src="On a Spring Day of Passing Whispers_west elevation.jpg"
+                    class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
+                />
+
+                <!-- 왼쪽 -->
+                <div onclick="prevImage()"
+                     class="absolute left-0 top-0 w-1/2 h-full cursor-w-resize"></div>
+
+                <!-- 오른쪽 -->
+                <div onclick="nextImage()"
+                     class="absolute right-0 top-0 w-1/2 h-full cursor-e-resize"></div>
+
+            </div>
+
+            <!-- 텍스트 -->
+            <div class="text-center">
+                <p id="title" class="text-sm mb-1">
+                    On a Spring Day of Passing Whispers
+                </p>
+                <p id="description" class="text-sm">
+                    Objects, passage and roof
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JS -->
+    <script>
+        const images = [
+            "On a Spring Day of Passing Whispers_west elevation.jpg",
+            "On a Spring Day of Passing Whispers_passage.jpg",
+            "On a Spring Day of Passing Whispers_backyard.jpg"
+        ];
+
+        const titles = [
+            "On a Spring Day of Passing Whispers",
+            "On a Spring Day of Passing Whispers",
+            "On a Spring Day of Passing Whispers"
+        ];
+
+        const descriptions = [
+            "Objects, passage and roof",
+            "View from the shared space",
+            "View from the backyard"
+        ];
+
+        let currentIndex = 0;
+
+        function showImage() {
+            const img = document.getElementById("slider");
+            const title = document.getElementById("title");
+            const desc = document.getElementById("description");
+
+            img.style.opacity = 0;
+
+            setTimeout(() => {
+                img.src = images[currentIndex];
+                title.textContent = titles[currentIndex];
+                desc.textContent = descriptions[currentIndex];
+
+                img.style.opacity = 1;
+            }, 300);
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage();
+        }
+    </script>
+
+</body>
+</html>
