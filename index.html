@@ -14,11 +14,11 @@
 
 <body class="min-h-screen bg-white">
 
-    <!-- Header -->
-    <header class="pt-12 pb-8 px-6">
+    <!-- Header (완전 기준) -->
+    <header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-sm tracking-wide mb-6">minseokkim</h1>
-            <nav class="flex justify-center gap-3 text-sm">
+            <h1 class="text-base tracking-wide mb-6">minseokkim</h1>
+            <nav class="flex justify-center gap-3 text-base">
                 <a href="#" class="hover:opacity-60 transition-opacity">Project List</a>
                 <span>/</span>
                 <a href="#" class="hover:opacity-60 transition-opacity">About</a>
@@ -29,55 +29,46 @@
     </header>
 
     <!-- Main -->
-    <main class="px-6 py-12">
+    <main class="px-6 pt-[140px] pb-12">
         <div class="max-w-3xl mx-auto">
 
             <!-- Slider -->
             <div class="mb-6 relative w-full h-[500px] bg-white flex items-center justify-center">
 
-                <!-- 이미지 -->
                 <img
                     id="slider"
-                    src="On a Spring Day of Passing Whispers_west elevation.jpg"
+                    src="Objects, passage, and roof.jpg"
                     class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
                 />
 
-                <!-- 왼쪽 -->
-                <div onclick="prevImage()"
-                     class="absolute left-0 top-0 w-[30%] h-full cursor-w-resize"></div>
+                <div onclick="prevImage()" class="absolute left-0 top-0 w-[30%] h-full cursor-w-resize"></div>
 
-                <!-- 중앙 (프로젝트 이동) -->
-                <a href="spring.html"
-                   class="absolute left-[30%] top-0 w-[40%] h-full cursor-pointer"></a>
+                <a href="spring.html" class="absolute left-[30%] top-0 w-[40%] h-full cursor-pointer"></a>
 
-                <!-- 오른쪽 -->
-                <div onclick="nextImage()"
-                     class="absolute right-0 top-0 w-[30%] h-full cursor-e-resize"></div>
+                <div onclick="nextImage()" class="absolute right-0 top-0 w-[30%] h-full cursor-e-resize"></div>
 
             </div>
 
             <!-- Caption -->
             <div class="text-center">
-                <p class="text-sm mb-1">On a Spring Day of Passing Whispers</p>
-                <p class="text-sm">Drawing and rendering workshop project, 2026</p>
+                <p class="text-base mb-1">On a Spring Day of Passing Whispers</p>
+                <p class="text-base">Drawing and rendering workshop project, 2026</p>
             </div>
 
         </div>
     </main>
 
-    <!-- JS -->
     <script>
         const images = [
-            "On a Spring Day of Passing Whispers_west elevation.jpg",
-            "On a Spring Day of Passing Whispers_passage.jpg",
-            "On a Spring Day of Passing Whispers_backyard.jpg"
+            "Objects, passage, and roof.jpg",
+            "View from the shared space.jpg",
+            "View from the backyard.jpg"
         ];
 
         let currentIndex = 0;
 
         function showImage() {
             const img = document.getElementById("slider");
-
             img.style.opacity = 0;
 
             setTimeout(() => {
