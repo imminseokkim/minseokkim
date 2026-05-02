@@ -37,11 +37,10 @@
             transform: translateY(0);
         }
 
-        /* 🔒 이미지 보호 */
         img {
             -webkit-user-drag: none;
             user-drag: none;
-            -webkit-touch-callout: none; /* iPhone 길게 누르기 메뉴 제거 */
+            -webkit-touch-callout: none;
         }
 
         .no-select {
@@ -86,12 +85,13 @@
         </div>
     </header>
 
-    <!-- ✅ 핵심 수정: safe-area 반영 -->
+    <!-- Main -->
     <main class="pt-[calc(140px+env(safe-area-inset-top))]">
 
         <!-- TEXT -->
         <section>
-            <div class="max-w-2xl px-6 text-base leading-relaxed optical-text">
+            <!-- ✅ 핵심 수정: 모바일에서만 위로 내려줌 -->
+            <div class="max-w-2xl px-6 pt-14 md:pt-0 text-base leading-relaxed optical-text">
 
                 <p class="text-center mb-12 text-lg">
                     On a Spring Day of Passing Whispers
@@ -116,7 +116,7 @@
             </div>
         </section>
 
-        <!-- IMAGE -->
+        <!-- IMAGE (기존 그대로 유지) -->
         <section>
             <div class="flex flex-col items-center">
                 <img src="A single narrative.jpg" draggable="false" class="max-h-[85vh] object-contain fade">
