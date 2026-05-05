@@ -43,16 +43,12 @@
             font-style: italic;
         }
 
-        /* ── 슬라이더 구조 ── */
-
-        /* 슬라이드 목록: overflow hidden + 상대 위치 */
         .slide-list {
             position: relative;
             overflow: hidden;
             width: 100%;
         }
 
-        /* 모든 슬라이드: 겹쳐서 숨김 */
         .slide-item {
             visibility: hidden;
             position: absolute;
@@ -61,13 +57,11 @@
             width: 100%;
         }
 
-        /* 현재 슬라이드: 표시 + 공간 차지 */
         .slide-item--current {
             visibility: visible;
             position: relative;
         }
 
-        /* 사라지는 슬라이드: fadeOut 애니메이션, 위 레이어 */
         .slide-item--hidePrevious,
         .slide-item--hideNext {
             visibility: visible;
@@ -76,7 +70,6 @@
             z-index: 2;
         }
 
-        /* 나타나는 슬라이드: 아래 레이어에서 대기 */
         .slide-item--showPrevious,
         .slide-item--showNext {
             z-index: 1;
@@ -89,7 +82,6 @@
             }
         }
 
-        /* 이전/다음 버튼: 슬라이드 위 좌우 50% 투명 클릭 영역 */
         .slide-btn {
             position: absolute;
             top: 0;
@@ -116,207 +108,197 @@
 
 <body class="bg-white text-black no-select">
 
-    <!-- 보안 -->
-    <script>
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('dragstart', e => e.preventDefault());
-        document.addEventListener('drop', e => e.preventDefault());
-        document.addEventListener('copy', e => e.preventDefault());
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+document.addEventListener('drop', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
 
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey) {
-                const blocked = ['c', 's', 'u'];
-                if (blocked.includes(e.key.toLowerCase())) {
-                    e.preventDefault();
-                }
-            }
-        });
-    </script>
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey) {
+        const blocked = ['c', 's', 'u'];
+        if (blocked.includes(e.key.toLowerCase())) {
+            e.preventDefault();
+        }
+    }
+});
+</script>
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-base tracking-wide mb-6">
-                <a href="index.html">minseokkim</a>
-            </h1>
-            <nav class="flex justify-center gap-3 text-base">
-                <a href="index.html">Project List</a>
-                <span>/</span>
-                <a href="#">About</a>
-                <span>/</span>
-                <a href="#">Contact</a>
-            </nav>
+<header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
+    <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-base tracking-wide mb-6">
+            <a href="index.html">minseokkim</a>
+        </h1>
+        <nav class="flex justify-center gap-3 text-base">
+            <a href="index.html">Project List</a>
+            <span>/</span>
+            <a href="#">About</a>
+            <span>/</span>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main class="pt-[calc(140px+env(safe-area-inset-top))]">
+
+    <!-- TEXT -->
+    <section>
+        <!-- 🔥 여기 1줄만 수정됨 -->
+        <div class="max-w-3xl px-6 pt-14 md:pt-0 text-sm leading-relaxed optical-text">
+
+            <p class="text-center mb-12 text-sm title-italic">
+                On a Spring Day of Passing Whispers
+            </p>
+
+            <p class="mb-6">
+                The purpose of this workshop is to help architecture studio students structure their design intentions as a visual language and learn how to communicate them clearly to others. In particular, drawing and rendering are treated not as simple outputs, but as a process of translating and organizing one's thoughts outward. This is to narrow the gap between design intention and interpretation. This gap appears when design thinking and expression operate separately. Expression that does not deliver the core logic remains in form¹. Therefore, this workshop repositions expression as a process that connects intention and meaning.
+            </p>
+
+            <p class="mb-6">
+                The workshop proceeds in the following order: providing pre-session materials, demonstrating the working process, hands-on practice, and feedback. The tutor demonstrates the working process — from modeling to drawings to rendering — based on the pre-session materials, and presents to participants the flow of the production process and the criteria for judgment. Participants then transform the drawings and images assigned to them into images that hint at a specific event, and deliver one sentence that represents that event. For example, "Something I valued has disappeared," or "Water is leaking in the passage." They may also arrange or remove objects related to their personal interests or identity. This is set up as a device for inserting one's own story into the work, and to form a structure that checks how the intended story reads to others. Before the session, the tutor provides pre-session materials to guide the work within a limited time. After the session, a communication channel is kept open to respond to individual feedback requests.
+            </p>
+
+            <p class="mb-6">
+                The story is set around what happens in a temporary residence where 14 architecture studio students are staying. The structure unfolds with each participant presenting one image and one sentence in parallel. Different perspectives and interpretations accumulate to form a single narrative.
+            </p>
+
+            <p class="text-xs text-gray-500">
+                ¹ This refers to the state of remaining in existence. An arbitrary object drifts through the void while carrying direction and intention yet to be interpreted. Meanwhile, the moment of interpreting the direction and intention of existence is the moment of blooming of essence and meaning. Herein, blooming is the starting point of a simultaneous and continuous phenomenon of discovery and creation — the process that follows is becoming. Simply put, a letter in a mailbox comes out, is read, and responses and creation continue.
+            </p>
+
         </div>
-    </header>
+    </section>
 
-    <!-- Main -->
-    <main class="pt-[calc(140px+env(safe-area-inset-top))]">
+    <!-- IMAGE -->
+    <section>
+        <div class="w-full px-6">
+            <div class="max-w-3xl mx-auto">
 
-        <!-- IMAGE SLIDER -->
-        <section>
-            <div class="w-full px-6">
-                <div class="max-w-3xl mx-auto">
+                <div class="text-center text-base mb-3">
+                    <span class="slide-counter__current">1</span>
+                    /
+                    <span class="slide-counter__total">7</span>
+                </div>
 
-                    <!-- 카운터 -->
-                    <div class="text-center text-base mb-3">
-                        <span class="slide-counter__current">1</span>
-                        /
-                        <span class="slide-counter__total">7</span>
-                    </div>
+                <div class="relative">
 
-                    <!-- 슬라이드 영역 (버튼 기준점) -->
-                    <div class="relative">
+                    <div class="slide-list">
 
-                        <!-- 슬라이드 목록 -->
-                        <div class="slide-list">
-
-                            <div class="slide-item slide-item--current">
-                                <img src="A single narrative.jpg" draggable="false" class="w-full h-auto">
-                            </div>
-
-                            <div class="slide-item">
-                                <img src="The northern field of Konkuk University.jpg" draggable="false" class="w-full h-auto">
-                            </div>
-
-                            <div class="slide-item">
-                                <img src="Ground floor plan.jpg" draggable="false" class="w-full h-auto">
-                            </div>
-
-                            <div class="slide-item">
-                                <img src="Second floor plan.jpg" draggable="false" class="w-full h-auto">
-                            </div>
-
-                            <div class="slide-item">
-                                <img src="Objects, passage, and roof.jpg" draggable="false" class="w-full h-auto">
-                            </div>
-
-                            <div class="slide-item">
-                                <img src="View from the shared space.jpg" draggable="false" class="w-full h-auto">
-                            </div>
-
-                            <div class="slide-item">
-                                <img src="View from the backyard.jpg" draggable="false" class="w-full h-auto">
-                            </div>
-
+                        <div class="slide-item slide-item--current">
+                            <img src="A single narrative.jpg" draggable="false" class="w-full h-auto">
                         </div>
 
-                        <!-- 이전/다음 버튼 -->
-                        <button class="slide-btn slide-btn--prev"></button>
-                        <button class="slide-btn slide-btn--next"></button>
+                        <div class="slide-item">
+                            <img src="The northern field of Konkuk University.jpg" draggable="false" class="w-full h-auto">
+                        </div>
+
+                        <div class="slide-item">
+                            <img src="Ground floor plan.jpg" draggable="false" class="w-full h-auto">
+                        </div>
+
+                        <div class="slide-item">
+                            <img src="Second floor plan.jpg" draggable="false" class="w-full h-auto">
+                        </div>
+
+                        <div class="slide-item">
+                            <img src="Objects, passage, and roof.jpg" draggable="false" class="w-full h-auto">
+                        </div>
+
+                        <div class="slide-item">
+                            <img src="View from the shared space.jpg" draggable="false" class="w-full h-auto">
+                        </div>
+
+                        <div class="slide-item">
+                            <img src="View from the backyard.jpg" draggable="false" class="w-full h-auto">
+                        </div>
 
                     </div>
 
-                    <!-- 캡션 -->
-                    <p id="caption" class="text-center text-base mt-4 min-h-[1.5rem]"></p>
+                    <button class="slide-btn slide-btn--prev"></button>
+                    <button class="slide-btn slide-btn--next"></button>
 
                 </div>
-            </div>
-        </section>
 
-        <!-- TEXT -->
-        <section>
-            <div class="max-w-2xl px-6 pt-14 md:pt-0 text-sm leading-relaxed optical-text">
-
-                <p class="text-center mb-12 text-sm title-italic">
-                    On a Spring Day of Passing Whispers
-                </p>
-
-                <p class="mb-6">
-                    The purpose of this workshop is to help architecture studio students structure their design intentions as a visual language and learn how to communicate them clearly to others. In particular, drawing and rendering are treated not as simple outputs, but as a process of translating and organizing one's thoughts outward. This is to narrow the gap between design intention and interpretation. This gap appears when design thinking and expression operate separately. Expression that does not deliver the core logic remains in form¹. Therefore, this workshop repositions expression as a process that connects intention and meaning.
-                </p>
-
-                <p class="mb-6">
-                    The workshop proceeds in the following order: providing pre-session materials, demonstrating the working process, hands-on practice, and feedback. The tutor demonstrates the working process — from modeling to drawings to rendering — based on the pre-session materials, and presents to participants the flow of the production process and the criteria for judgment. Participants then transform the drawings and images assigned to them into images that hint at a specific event, and deliver one sentence that represents that event. For example, "Something I valued has disappeared," or "Water is leaking in the passage." They may also arrange or remove objects related to their personal interests or identity. This is set up as a device for inserting one's own story into the work, and to form a structure that checks how the intended story reads to others. Before the session, the tutor provides pre-session materials to guide the work within a limited time. After the session, a communication channel is kept open to respond to individual feedback requests.
-                </p>
-
-                <p class="mb-6">
-                    The story is set around what happens in a temporary residence where 14 architecture studio students are staying. The structure unfolds with each participant presenting one image and one sentence in parallel. Different perspectives and interpretations accumulate to form a single narrative.
-                </p>
-
-                <p class="text-xs text-gray-500">
-                    ¹ This refers to the state of remaining in existence. An arbitrary object drifts through the void while carrying direction and intention yet to be interpreted. Meanwhile, the moment of interpreting the direction and intention of existence is the moment of blooming of essence and meaning. Herein, blooming is the starting point of a simultaneous and continuous phenomenon of discovery and creation — the process that follows is becoming. Simply put, a letter in a mailbox comes out, is read, and responses and creation continue.
-                </p>
+                <p id="caption" class="text-center text-base mt-4 min-h-[1.5rem]"></p>
 
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+</main>
 
-    <script>
-        const slides = Array.from(document.querySelectorAll('.slide-item'));
-        const counter = document.querySelector('.slide-counter__current');
-        const caption = document.getElementById('caption');
-        const lastIndex = slides.length - 1;
-        let currentIndex = 0;
+<script>
+const slides = Array.from(document.querySelectorAll('.slide-item'));
+const counter = document.querySelector('.slide-counter__current');
+const caption = document.getElementById('caption');
+const lastIndex = slides.length - 1;
+let currentIndex = 0;
 
-        const captions = [
-            '',
-            'The northern field of Konkuk University',
-            'Ground floor plan',
-            'Second floor plan',
-            'Objects, passage, and roof',
-            'View from the shared space',
-            'View from the backyard'
-        ];
+const captions = [
+    '',
+    'The northern field of Konkuk University',
+    'Ground floor plan',
+    'Second floor plan',
+    'Objects, passage, and roof',
+    'View from the shared space',
+    'View from the backyard'
+];
 
-        function addClass(el, cls) {
-            cls.split(' ').forEach(c => { if (c) el.classList.add(c); });
-        }
+function addClass(el, cls) {
+    cls.split(' ').forEach(c => { if (c) el.classList.add(c); });
+}
 
-        function removeHelpers(el) {
-            el.classList.remove(
-                'slide-item--current',
-                'slide-item--hidePrevious',
-                'slide-item--hideNext',
-                'slide-item--showPrevious',
-                'slide-item--showNext'
-            );
-        }
+function removeHelpers(el) {
+    el.classList.remove(
+        'slide-item--current',
+        'slide-item--hidePrevious',
+        'slide-item--hideNext',
+        'slide-item--showPrevious',
+        'slide-item--showNext'
+    );
+}
 
-        function goTo(index) {
-            if (index === currentIndex) return;
+function goTo(index) {
+    if (index === currentIndex) return;
 
-            if (index < 0) index = lastIndex;
-            if (index > lastIndex) index = 0;
+    if (index < 0) index = lastIndex;
+    if (index > lastIndex) index = 0;
 
-            const goingForward =
-                (index > currentIndex || (index === 0 && currentIndex === lastIndex)) &&
-                !(index === lastIndex && currentIndex === 0);
+    const goingForward =
+        (index > currentIndex || (index === 0 && currentIndex === lastIndex)) &&
+        !(index === lastIndex && currentIndex === 0);
 
-            removeHelpers(slides[currentIndex]);
-            removeHelpers(slides[index]);
+    removeHelpers(slides[currentIndex]);
+    removeHelpers(slides[index]);
 
-            addClass(slides[currentIndex],
-                goingForward ? 'slide-item--hidePrevious' : 'slide-item--hideNext');
+    addClass(slides[currentIndex],
+        goingForward ? 'slide-item--hidePrevious' : 'slide-item--hideNext');
 
-            addClass(slides[index],
-                'slide-item--current ' +
-                (goingForward ? 'slide-item--showNext' : 'slide-item--showPrevious'));
+    addClass(slides[index],
+        'slide-item--current ' +
+        (goingForward ? 'slide-item--showNext' : 'slide-item--showPrevious'));
 
-            currentIndex = index;
+    currentIndex = index;
 
-            if (counter) counter.textContent = currentIndex + 1;
-            if (caption) caption.textContent = captions[currentIndex];
-        }
+    if (counter) counter.textContent = currentIndex + 1;
+    if (caption) caption.textContent = captions[currentIndex];
+}
 
-        function next()     { goTo(currentIndex + 1); }
-        function previous() { goTo(currentIndex - 1); }
+function next()     { goTo(currentIndex + 1); }
+function previous() { goTo(currentIndex - 1); }
 
-        // 버튼 클릭
-        document.querySelector('.slide-btn--prev').addEventListener('click', previous);
-        document.querySelector('.slide-btn--next').addEventListener('click', next);
+document.querySelector('.slide-btn--prev').addEventListener('click', previous);
+document.querySelector('.slide-btn--next').addEventListener('click', next);
 
-        // 키보드 좌우 화살표
-        document.addEventListener('keyup', function(e) {
-            if (e.keyCode === 37) previous();
-            if (e.keyCode === 39) next();
-        });
+document.addEventListener('keyup', function(e) {
+    if (e.keyCode === 37) previous();
+    if (e.keyCode === 39) next();
+});
 
-        // Hammer.js 터치 스와이프
-        const hammer = new Hammer(document.querySelector('.slide-list'));
-        hammer.on('swiperight', previous);
-        hammer.on('swipeleft',  next);
-    </script>
+const hammer = new Hammer(document.querySelector('.slide-list'));
+hammer.on('swiperight', previous);
+hammer.on('swipeleft',  next);
+</script>
 
 </body>
 </html>
