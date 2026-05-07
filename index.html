@@ -57,13 +57,18 @@ document.addEventListener('keydown', function(e) {
 <main class="px-6 pt-[12vh] pb-12">
     <div class="max-w-3xl mx-auto">
 
-        <!-- 🔥 여기만 변경됨 -->
+        <!-- 🔥 이미지 컨테이너 -->
         <div class="mb-6 relative w-full h-[65vh] bg-white flex items-center justify-center">
 
-            <img
-                id="slider"
+            <!-- 🔥 기존 img → 2개로 교체 -->
+            <img id="imgA"
                 src="poster_01.jpg"
-                class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
+                class="absolute max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
+            />
+
+            <img id="imgB"
+                src="poster_01.jpg"
+                class="absolute max-w-full max-h-full object-contain transition-opacity duration-500 opacity-0"
             />
 
             <div onclick="prevImage()" class="absolute left-0 top-0 w-[30%] h-full cursor-w-resize"></div>
@@ -100,20 +105,31 @@ const captions = [
 ];
 
 let currentIndex = 0;
+let isA = true;
 
 function showImage() {
-    const img = document.getElementById("slider");
+    const imgA = document.getElementById("imgA");
+    const imgB = document.getElementById("imgB");
+
     const title = document.getElementById("caption-title");
     const sub = document.getElementById("caption-sub");
 
-    img.style.opacity = 0;
+    const nextSrc = images[currentIndex];
 
-    setTimeout(() => {
-        img.src = images[currentIndex];
-        title.textContent = captions[currentIndex].title;
-        sub.textContent = captions[currentIndex].sub;
-        img.style.opacity = 1;
-    }, 300);
+    if (isA) {
+        imgB.src = nextSrc;
+        imgB.style.opacity = 1;
+        imgA.style.opacity = 0;
+    } else {
+        imgA.src = nextSrc;
+        imgA.style.opacity = 1;
+        imgB.style.opacity = 0;
+    }
+
+    isA = !isA;
+
+    title.textContent = captions[currentIndex].title;
+    sub.textContent = captions[currentIndex].sub;
 }
 
 function nextImage() {
