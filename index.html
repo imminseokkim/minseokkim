@@ -11,13 +11,11 @@
             font-family: 'Times New Roman', Times, serif;
         }
 
-        /* 🔒 이미지 보호 */
         img {
             -webkit-user-drag: none;
             user-drag: none;
         }
 
-        /* 🔒 선택 최소화 */
         .no-select {
             user-select: none;
             -webkit-user-select: none;
@@ -27,106 +25,114 @@
 
 <body class="min-h-screen bg-white no-select">
 
-    <!-- 🔒 보안 스크립트 -->
-    <script>
-        // 우클릭 방지
-        document.addEventListener('contextmenu', e => e.preventDefault());
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+document.addEventListener('drop', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
 
-        // 드래그 방지
-        document.addEventListener('dragstart', e => e.preventDefault());
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey) {
+        const blocked = ['c', 's', 'u'];
+        if (blocked.includes(e.key.toLowerCase())) {
+            e.preventDefault();
+        }
+    }
+});
+</script>
 
-        // 드롭 방지
-        document.addEventListener('drop', e => e.preventDefault());
+<!-- 🔥 header 높이를 vh 기준으로 고정 -->
+<header class="fixed top-0 left-0 w-full h-[12vh] px-6 bg-white z-50 flex items-center">
+    <div class="max-w-4xl mx-auto text-center w-full">
+        <h1 class="text-base tracking-wide mb-2">minseokkim</h1>
+        <nav class="flex justify-center gap-3 text-base">
+            <a href="#" class="hover:opacity-60 transition-opacity">Project List</a>
+            <span>/</span>
+            <a href="#" class="hover:opacity-60 transition-opacity">About</a>
+            <span>/</span>
+            <a href="#" class="hover:opacity-60 transition-opacity">Contact</a>
+        </nav>
+    </div>
+</header>
 
-        // 복사 방지
-        document.addEventListener('copy', e => e.preventDefault());
+<!-- 🔥 header 높이만큼 자동 밀림 -->
+<main class="px-6 pt-[12vh] pb-12">
+    <div class="max-w-3xl mx-auto">
 
-        // Ctrl 기반 단축키 차단
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey) {
-                const blocked = ['c', 's', 'u'];
-                if (blocked.includes(e.key.toLowerCase())) {
-                    e.preventDefault();
-                }
-            }
-        });
-    </script>
+        <div class="mb-6 relative w-full h-[500px] bg-white flex items-center justify-center">
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 w-full pt-12 pb-8 px-6 bg-white z-50">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-base tracking-wide mb-6">minseokkim</h1>
-            <nav class="flex justify-center gap-3 text-base">
-                <a href="#" class="hover:opacity-60 transition-opacity">Project List</a>
-                <span>/</span>
-                <a href="#" class="hover:opacity-60 transition-opacity">About</a>
-                <span>/</span>
-                <a href="#" class="hover:opacity-60 transition-opacity">Contact</a>
-            </nav>
-        </div>
-    </header>
+            <img
+                id="slider"
+                src="poster_01.jpg"
+                class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
+            />
 
-    <!-- Main -->
-    <main class="px-6 pt-[140px] pb-12">
-        <div class="max-w-3xl mx-auto">
+            <div onclick="prevImage()" class="absolute left-0 top-0 w-[30%] h-full cursor-w-resize"></div>
 
-            <!-- Slider -->
-            <div class="mb-6 relative w-full h-[500px] bg-white flex items-center justify-center">
+            <div onclick="handleCenterClick()" class="absolute left-[30%] top-0 w-[40%] h-full cursor-pointer"></div>
 
-                <img
-                    id="slider"
-                    src="Objects, passage, and roof.jpg"
-                    class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-100"
-                />
-
-                <div onclick="prevImage()" class="absolute left-0 top-0 w-[30%] h-full cursor-w-resize"></div>
-
-                <a href="spring.html" class="absolute left-[30%] top-0 w-[40%] h-full cursor-pointer"></a>
-
-                <div onclick="nextImage()" class="absolute right-0 top-0 w-[30%] h-full cursor-e-resize"></div>
-
-            </div>
-
-            <!-- Caption -->
-            <div class="text-center">
-                <p class="text-base mb-1">On a Spring Day of Passing Whispers</p>
-                <p class="text-base">Drawing and rendering workshop project, 2026</p>
-            </div>
+            <div onclick="nextImage()" class="absolute right-0 top-0 w-[30%] h-full cursor-e-resize"></div>
 
         </div>
-    </main>
 
-    <!-- JS -->
-    <script>
-        const images = [
-            "Objects, passage, and roof.jpg",
-            "View from the shared space.jpg",
-            "View from the backyard.jpg"
-        ];
+        <div class="text-center">
+            <p id="caption-title" class="text-base mb-1 italic">On a Spring Day of Passing Whispers</p>
+            <p id="caption-sub" class="text-base">Konkuk, Drawing and rendering workshop project, 2026</p>
+        </div>
 
-        let currentIndex = 0;
+    </div>
+</main>
 
-        function showImage() {
-            const img = document.getElementById("slider");
+<script>
+const images = [
+    "poster_01.jpg",
+    "poster_02.jpg"
+];
 
-            img.style.opacity = 0;
+const captions = [
+    {
+        title: "On a Spring Day of Passing Whispers",
+        sub: "Konkuk, Drawing and rendering workshop project, 2026"
+    },
+    {
+        title: "On a Summer Day of Wearing AIRism",
+        sub: "Yonsei, Rendering and collage workshop project, 2026"
+    }
+];
 
-            setTimeout(() => {
-                img.src = images[currentIndex];
-                img.style.opacity = 1;
-            }, 300);
-        }
+let currentIndex = 0;
 
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage();
-        }
+function showImage() {
+    const img = document.getElementById("slider");
+    const title = document.getElementById("caption-title");
+    const sub = document.getElementById("caption-sub");
 
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage();
-        }
-    </script>
+    img.style.opacity = 0;
+
+    setTimeout(() => {
+        img.src = images[currentIndex];
+        title.textContent = captions[currentIndex].title;
+        sub.textContent = captions[currentIndex].sub;
+        img.style.opacity = 1;
+    }, 300);
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+}
+
+function handleCenterClick() {
+    if (currentIndex === 0) {
+        window.location.href = "spring.html";
+    }
+}
+</script>
 
 </body>
 </html>
