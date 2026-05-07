@@ -41,7 +41,6 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-<!-- 🔥 header 높이를 vh 기준으로 고정 -->
 <header class="fixed top-0 left-0 w-full h-[12vh] px-6 bg-white z-50 flex items-center">
     <div class="max-w-4xl mx-auto text-center w-full">
         <h1 class="text-base tracking-wide mb-2">minseokkim</h1>
@@ -55,11 +54,11 @@ document.addEventListener('keydown', function(e) {
     </div>
 </header>
 
-<!-- 🔥 header 높이만큼 자동 밀림 -->
 <main class="px-6 pt-[12vh] pb-12">
     <div class="max-w-3xl mx-auto">
 
-        <div class="mb-6 relative w-full h-[500px] bg-white flex items-center justify-center">
+        <!-- 🔥 여기만 변경됨 -->
+        <div class="mb-6 relative w-full h-[65vh] bg-white flex items-center justify-center">
 
             <img
                 id="slider"
